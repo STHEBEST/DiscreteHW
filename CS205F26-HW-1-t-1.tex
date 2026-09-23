@@ -1,0 +1,742 @@
+\documentclass{article}
+
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%=====================================================
+% Add PACKAGES Here (You typically would not need to):
+%=====================================================
+
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry} % Used for page margins, often replaces fullpage
+\usepackage{amsmath,amsthm,amssymb} % amssymb added for common math symbols
+
+\usepackage{enumitem} % For custom list environments
+
+\usepackage{tcolorbox}
+% \usepackage{fullpage} % Geometry handles this better
+\usepackage[parfill]{parskip} % For paragraph spacing
+\usepackage{hyperref}
+\usepackage[nameinlink, capitalise]{cleveref} % For smart referencing
+
+\usepackage{algorithm2e} % For algorithms
+\usepackage{tikz} % For drawing diagrams
+\usepackage{siunitx} % For units
+\usepackage{graphicx}
+
+\usetikzlibrary{arrows.meta, positioning}
+
+\crefname{algocf}{Algorithm}{Algorithms}
+
+\RestyleAlgo{ruled} % Style for algorithms
+
+\definecolor{linkc}{rgb}{0.1, 0.5, 0.7}
+\definecolor{citec}{rgb}{0.6, 0.3, 0.7}
+\definecolor{urlc}{rgb}{0.5, 0.1, 0.2}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkc,
+    citecolor=citec,
+    urlcolor=urlc
+}
+
+\renewcommand{\d}{\,\mathrm{d}} % Differential d
+
+
+%=====================================================
+% Ignore This Part (But Do NOT Delete It:)
+%=====================================================
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{fun}{Fun with Algorithms}
+\newtheorem*{challenge}{Challenge Yourself}
+\def\fline{\rule{0.75\linewidth}{0.5pt}}
+\newcommand{\finishline}{\begin{center}\fline\end{center}}
+\newtheorem*{solution*}{Solution}
+\newenvironment{solution}{\begin{solution*}}{{\finishline} \end{solution*}}
+\newcommand{\grade}[1]{\hfill{\textbf{($\mathbf{#1}$ points)}}}
+\newcommand{\thisdate}{\today}
+\newcommand{\thissemester}{\textbf{Rutgers: Fall 2026}}
+\newcommand{\thiscourse}{CS 205: Discrete Structures - I} 
+\newcommand{\thishomework}{Number} 
+\newcommand{\thisname}{Name} 
+\newcommand{\thisextension}{Yes/No} 
+
+\headheight 40pt              
+\headsep 10pt
+
+
+
+\newcommand{\thisheading}{
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { \textbf{\thiscourse \hfill \thissemester} }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill Homework \#\thishomework \hfill} }
+       \vspace{2mm}
+         \hbox to 6.28in { { \hfill \hfill} }
+       \vspace{2mm}
+       \hbox to 6.28in { \emph{Name(s): \thisname \hfill }}
+      \vspace{2mm}}
+      }
+   \end{center}
+   \bigskip
+}
+
+%=====================================================
+% Some useful MACROS (you can define your own in the same exact way also)
+%=====================================================
+
+
+\newcommand{\ceil}[1]{{\left\lceil{#1}\right\rceil}}
+\newcommand{\floor}[1]{{\left\lfloor{#1}\right\rfloor}}
+\newcommand{\prob}[1]{\Pr\paren{#1}}
+\newcommand{\expect}[1]{\Exp\bracket{#1}}
+\newcommand{\var}[1]{\textnormal{Var}\bracket{#1}}
+\newcommand{\set}[1]{\ensuremath{\left\{ #1 \right\}}}
+\newcommand{\poly}{\mbox{\rm poly}}
+
+
+\renewcommand{\thishomework}{1} %Homework number
+
+%=====================================================
+% Fill Out This Part With Your Own Information:
+%=====================================================
+
+\renewcommand{\thisname}{FIRST$_1$ LAST$_1$, FIRST$_2$ LAST$_2$, FIRST$_3$ LAST$_3$} % Enter your name here
+
+
+
+\begin{document}
+
+\thisheading
+
+\subsection*{Homework Policy}
+\begin{itemize}
+\item You may consult all course materials (lecture notes, textbook, slides, etc.) while writing your solutions. No external resources are permitted.
+
+
+\item \textbf{All submissions should be typeset, handwritten solutions are not accepted}.
+
+\item Provide complete proofs, show all detailed calculations and arguments.
+
+
+
+\item Homework assignments are completed and submitted in fixed groups of 4 students. Only \textbf{one member of the group submits} the full solution on Canvas. The submission must include the names of all group members. The other two members do \textbf{not need to submit anything separately}.
+
+\item You may discuss the problems with any of your classmates, even those outside your group. However, \textbf{each group must write and submit their solutions independently}.
+
+ \item Attempt the challenge problems only if you find them enjoyable.
+\end{itemize}
+
+
+
+\subsection*{Acknowledgment (to be reviewed and edited as needed)}
+\begin{tcolorbox}[colframe=black,colback=white,arc=5mm]
+Our team members, \textbf{Leonhard Euler (le123)}, \textbf{Emmy Noether (en123)}, and \textbf{Srinivasa Ramanujan (sr123)}, collaborated extensively on this work. We dedicated 123 hours to independently analyzing Problem 17 before consulting external sources. After investing 123 days in Problem 32(c), we sought clarification from ChatGPT. Despite persistent efforts spanning 123 years, we were unable to solve Problem 49. \textbf{We hereby affirm that all external assistance utilized in the preparation of this document has been properly acknowledged}.
+\end{tcolorbox}
+
+\finishline
+\newpage
+
+
+\newpage
+
+%=====================================================
+% LaTeX Tip: ... to here
+%=====================================================	
+
+
+\bigskip
+
+
+%==============================================================================
+%    ===> WRITE YOUR SOLUTIONS BELOW <===
+%==============================================================================
+
+\begin{problem}
+Let
+\begin{itemize}
+    \item $p$: ``The server is online.''
+    \item $q$: ``The database is available.''
+    \item $r$: ``Users can log in.''
+\end{itemize}
+
+Express each statement using $p,q,r$ and logical connectives.
+
+\begin{enumerate}[label=\alph*)]
+    \item Users can log in only if the server is online.
+
+    \begin{solution}
+        % Solution to Problem 1(a) goes here
+
+       $r \rightarrow p$
+
+    \end{solution}
+
+    \item The database is available unless the server is offline.
+
+    \begin{solution}
+        % Solution to Problem 1(b) goes here
+
+    $q \lor \neg p$
+
+    \end{solution}
+
+    \item If either the server is offline or the database is unavailable,
+    then users cannot log in.
+
+    \begin{solution}
+        % Solution to Problem 1(c) goes here
+
+        $(\neg p \lor \neg q) \rightarrow \neg r$
+
+    \end{solution}
+
+    \item Users can log in if and only if the server is online and
+    the database is available.
+
+    \begin{solution}
+        % Solution to Problem 1(d) goes here
+
+        $(\neg p \lor \neg q) \rightarrow \neg r$
+
+    \end{solution}
+
+    \item The server being online does not guarantee that users can log in.
+
+    \begin{solution}
+        % Solution to Problem 1(e) goes here
+
+        $\neg(p \rightarrow r)$
+
+    \end{solution}
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+Let the domain be all students. Define
+\begin{itemize}
+    \item $P(x)$: ``$x$ submitted the assignment.''
+    \item $Q(x)$: ``$x$ passed the exam.''
+    \item $R(x)$: ``$x$ attended every recitation.''
+\end{itemize}
+
+Express each statement using predicates, logical connectives, and quantifiers.
+
+\begin{enumerate}[label=\alph*)]
+    \item Every student who attended every recitation and submitted the
+    assignment passed the exam.
+
+    \begin{solution}
+        % Solution to Problem 2(a) goes here
+$\forall x ((R(x) \land P(x)) \rightarrow Q(x))$
+
+
+    \end{solution}
+
+    \item Some student submitted the assignment but did not pass the exam.
+
+    \begin{solution}
+        % Solution to Problem 2(b) goes here
+$\exists x (P(x) \land \neg Q(x))$
+
+
+    \end{solution}
+
+    \item Not every student who submitted the assignment passed the exam.
+
+    \begin{solution}
+        % Solution to Problem 2(c) goes here
+$\neg \forall x (P(x) \rightarrow Q(x))$
+
+
+    \end{solution}
+
+    \item No student who failed to submit the assignment attended every
+    recitation.
+
+    \begin{solution}
+        % Solution to Problem 2(d) goes here
+
+$\forall x (\neg P(x) \rightarrow \neg R(x))$
+
+    \end{solution}
+
+    \item Exactly one student passed the exam without submitting the assignment.
+
+    \begin{solution}
+        % Solution to Problem 2(e) goes here
+
+$\exists x (Q(x) \land \neg P(x) \land \forall y ((Q(y) \land \neg P(y)) \rightarrow y = x))$
+
+    \end{solution}
+\end{enumerate}
+\end{problem}
+
+
+
+
+
+
+\begin{problem}
+
+A very special island is inhabited only by knights and knaves. Knights always tell the truth, and knaves always lie.
+
+You have met a group of four islanders: Yasmin, Trevor, Ingrid, and Victoria.  
+Each is either a \textbf{knight} (always tells the truth) or a \textbf{knave} (always lies).  
+
+They make the following statements:  
+\begin{itemize}
+    \item Victoria says: ``Ingrid lies.''
+    \item Ingrid says: ``Trevor never tells the truth.''
+    \item Trevor says: ``Victoria is a knight.''
+    \item Yasmin says: ``Trevor is a knave and I am a knave.''
+\end{itemize}
+
+Let the propositional variables be:  
+\[
+p = \text{``Victoria is a knight''}, \quad
+q = \text{``Ingrid is a knight''}, \quad
+r = \text{``Trevor is a knight''}, \quad
+s = \text{``Yasmin is a knight''}.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Turn the above statement made by the people into boolean formula; For instance the first statement "Victoria says: Ingrid lies." means that $p \iff \neg q$. 
+
+    \begin{solution}
+        % Solution to Problem 3(a) goes here
+
+
+
+    \end{solution}
+    \item Construct a truth table for the formulae and use it to determine which islanders are knights and which are knaves.
+
+    \begin{solution}
+        % Solution to Problem 3(b) goes here
+
+
+
+    \end{solution}
+\end{enumerate}
+
+
+\end{problem}
+
+
+
+    \begin{problem}
+    A hiring committee has four members: the President (P), Vice-President (V), Secretary (S), and Treasurer (T). Let their votes be represented by boolean variables $p, v, s, t$, which are true if they vote 'yes' and false if they vote 'no'. A candidate is hired (output $H$ is true) if either:
+    \begin{itemize}
+        \item The President and Vice-President both vote 'yes', OR
+        \item At least three members vote 'yes'.
+    \end{itemize}
+    \begin{enumerate}[label=(\alph*)]
+        \item Write an unsimplified boolean formula for $H$ in terms of $p, v, s, t$ that directly translates the hiring rules. (Hint: "At least three" means P,V,S vote yes, OR P,V,T vote yes, etc.)
+
+        \begin{solution}
+            % Solution to Problem 4(a) goes here
+
+
+
+        \end{solution}
+        \item Simplify the formula from part (a) using the rules of boolean algebra. Show your steps.
+
+        \begin{solution}
+            % Solution to Problem 4(b) goes here
+
+
+
+        \end{solution}
+        \item Draw a logic circuit that implements the \textbf{simplified} formula. You may use AND, OR, and NOT gates with any number of inputs. (You can make the circuit on circuitverse and add the link and picture here.)
+
+        \begin{solution}
+            % Solution to Problem 4(c) goes here
+
+
+
+        \end{solution}
+    \end{enumerate}
+\end{problem}
+
+
+
+    \begin{problem}[Project Specification Consistency]
+    A software team is finalizing the requirements for a new project. There are several constraints they must follow. Let the propositions be:
+    \begin{itemize}
+        \item $r$: The application will have real-time features.
+        \item $c$: The application will be deployed on the cloud.
+        \item $m$: The database will be a NoSQL database.
+    \end{itemize}
+    The constraints are as follows:
+    \begin{enumerate}
+        \item If the application has real-time features, it must be deployed on the cloud.
+        \item For any cloud deployment, a NoSQL database is required.
+        \item The client insists that the application must have real-time features, but they cannot use a NoSQL database for this project.
+    \end{enumerate}
+    \begin{enumerate}[label=(\alph*)]
+        \item Translate the three project constraints into separate propositional logic formulas.
+
+        \begin{solution}
+            % Solution to Problem 5(a) goes here
+
+
+
+        \end{solution}
+        \item Determine if this set of three constraints is consistent. Can the project be built according to these specifications? Justify your answer.
+
+        \begin{solution}
+            % Solution to Problem 5(b) goes here
+
+
+
+        \end{solution}
+        \item Suppose constraint (3) is changed to: "The client insists that the application must have real-time features, but they cannot deploy on the cloud." Is the set of constraints \{1, 2, new 3\} consistent?
+
+        \begin{solution}
+            % Solution to Problem 5(c) goes here
+
+
+
+        \end{solution}
+        \item Consider only the first two constraints. Is the statement, "If the application has real-time features, then it uses a NoSQL database" ($r \rightarrow m$), a logical consequence of these two constraints? (i.e., is $((r \rightarrow c) \land (c \rightarrow m)) \rightarrow (r \rightarrow m)$ a tautology?)
+
+        \begin{solution}
+            % Solution to Problem 5(d) goes here
+
+
+
+        \end{solution}
+    \end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+Each door will lead to one thing: either a tiger or treasure. The two doors may both lead to a tiger, both may lead to treasure, or one may lead to a tiger and the other treasure.
+
+If Door 1 leads to treasure, its inscriptions are true, otherwise they are false. If Door 2 leads to a tiger, its inscriptions are true, otherwise they are false.
+
+Door 1 says: Both rooms have treasure.
+
+Door 2 says: This room has treasure and the other room has a tiger.
+
+Phrase this problem in terms of logical formulae and find the treasure if it exists.
+
+\begin{solution}
+    % Solution to Problem 6 goes here
+
+
+
+\end{solution}
+
+\end{problem}
+
+\begin{problem}
+Let the domain be $X$.   Define $F(x,y,z)$ to mean ``$x+y=z$.''  
+
+We will consider different domains for $X$: the integers $\mathbb{Z}$, the rationals $\mathbb{Q}$, and the reals $\mathbb{R}$.
+
+\begin{enumerate}[label=(\alph*)]
+    \item For each statement, write it in English, and negate it with quantifiers pushed in.
+
+\begin{enumerate}
+  \item $\forall x \in \mathbb{Z}\; \exists y \in \mathbb{Z}\; F(x,y,0)$
+
+  \begin{solution}
+      % Solution to Problem 7(a)(1) goes here
+
+
+
+  \end{solution}
+  \item $\exists z \in \mathbb{Z}\; \forall x \in \mathbb{Z}\; \forall y \in \mathbb{Z}\; F(x,y,z)$
+
+  \begin{solution}
+      % Solution to Problem 7(a)(2) goes here
+
+
+
+  \end{solution}
+\end{enumerate}
+
+
+\item State whether each is true or false.
+
+\begin{enumerate}
+  \item Over $\mathbb{Z}$: $\forall x \in \mathbb{Z}\; \exists y \in \mathbb{Z}\; F(x,y,0)$
+
+  \begin{solution}
+      % Solution to Problem 7(b)(1) goes here
+
+
+
+  \end{solution}
+  \item Over $\mathbb{Q}$: $\forall z \in \mathbb{Q}\; \exists x,y \in \mathbb{Q}\; F(x,y,z)$
+
+  \begin{solution}
+      % Solution to Problem 7(b)(2) goes here
+
+
+
+  \end{solution}
+  \item Over $\mathbb{Z}$: $\exists z \in \mathbb{Z}\; \forall x \in \mathbb{Z}\; F(x,x,z)$
+
+  \begin{solution}
+      % Solution to Problem 7(b)(3) goes here
+
+
+
+  \end{solution}
+\end{enumerate}
+
+\item Translate:
+
+\begin{enumerate}
+  \item ``Every integer has an additive inverse.''
+
+  \begin{solution}
+      % Solution to Problem 7(c)(1) goes here
+
+
+
+  \end{solution}
+  \item ``There is a prime number greater than 100.''
+
+  \begin{solution}
+      % Solution to Problem 7(c)(2) goes here
+
+
+
+  \end{solution}
+  \item ``Not all rationals are integers.''
+
+  \begin{solution}
+      % Solution to Problem 7(c)(3) goes here
+
+
+
+  \end{solution}
+  \item ``For every real number $x$, there exists a rational $y$ with $y>x$.'' 
+
+  \begin{solution}
+      % Solution to Problem 7(c)(4) goes here
+
+
+
+  \end{solution}
+\end{enumerate}
+
+\item For each of Part 3, write the formal negation, then restate in English.  
+Example:  
+\[
+\text{``Every integer has an additive inverse''} \quad \longrightarrow \quad \exists x \in \mathbb{Z}, \; \text{$x$ has no additive inverse.}
+\]
+
+\begin{solution}
+    % Solution to Problem 7(d) goes here
+
+
+
+\end{solution}
+\end{enumerate}
+
+
+
+
+
+\end{problem}
+
+
+    \begin{problem}
+    The domain of cryptographers is $\{\text{Ron, Adi, Leonard, Whit, Susan}\}$. Let the predicate $\text{knowsKey}(x)$ mean "$x$ knows the secret key."
+
+    Translate each logical statement into English, and then determine who knows the key.
+    \begin{enumerate}[label=(\roman*)]
+        \item $\exists x\,\exists y\,(x \neq y \land \text{knowsKey}(x) \land \text{knowsKey}(y))$
+
+        \begin{solution}
+            % Solution to Problem 8(1) goes here
+
+There are at least two different cryptographers that know the secret key.
+
+        \end{solution}
+        \item $\neg \exists x\,\exists y\,\exists z\,(x\neq y \land x\neq z \land y\neq z \land \text{knowsKey}(x) \land \text{knowsKey}(y) \land \text{knowsKey}(z))$
+
+        \begin{solution}
+            % Solution to Problem 8(2) goes here
+
+There are not three different cryptographers that know the secret key.
+
+        \end{solution}
+        \item $\text{knowsKey}(\text{Ron}) \rightarrow \text{knowsKey}(\text{Whit})$
+
+        \begin{solution}
+            % Solution to Problem 8(3) goes here
+
+If Ron knows the secret key, then Whit also knows the secret key.
+
+        \end{solution}
+        \item $\text{knowsKey}(\text{Adi}) \lor \text{knowsKey}(\text{Ron})$
+
+        \begin{solution}
+            % Solution to Problem 8(4) goes here
+
+Adi knows the secret key, or Ron knows the secret key.
+
+        \end{solution}
+        \item $\text{knowsKey}(\text{Whit}) \rightarrow \text{knowsKey}(\text{Adi})$
+
+        \begin{solution}
+            % Solution to Problem 8(5) goes here
+
+If Whit knows the secret key, then Adi also knows the secret key.
+
+        \end{solution}
+        \item $\text{knowsKey}(\text{Adi}) \rightarrow \neg\,\text{knowsKey}(\text{Susan})$
+
+        \begin{solution}
+            % Solution to Problem 8(6) goes here
+
+If Adi knows the secret key, then Susan does not know the secret key.
+
+        \end{solution}
+        \item $\text{knowsKey}(\text{Leonard}) \rightarrow \text{knowsKey}(\text{Ron})$
+
+        \begin{solution}
+            % Solution to Problem 8(7) goes here
+
+If Leonard knows the secret key, then Ron also knows the secret key.
+
+        \end{solution}
+    \end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+Prove the following statements. You need to give a proof starting with the definition. You will not get any credit for providing examples.
+
+(a) Prove that the sum two rational numbers is rational.
+
+\begin{solution}
+    % Solution to Problem 9(a) goes here
+
+
+
+\end{solution}
+
+(b) Prove that the sum of an irrational number and a rational number must be irrational.
+
+\begin{solution}
+    % Solution to Problem 9(b) goes here
+
+
+
+\end{solution}
+
+(c) "$x \text{ is rational}$" is euqivalent to both the statements "$\frac{x}{2} \text{ is rational}$" and  "$3x-5 \text{ is rational}$" 
+
+\begin{solution}
+    % Solution to Problem 9(c) goes here
+
+
+
+\end{solution}
+
+
+\end{problem}
+
+
+
+\finishline
+
+
+\vspace{10pt}
+
+\begin{challenge} [NOT FOR GRADING]
+
+You meet six mathematicians: Ada, Bertrand, Carl, Emmy, David, and Sofia.
+
+Each mathematician is one of the following four types:
+
+\begin{itemize}
+    \item \textbf{Truth-teller}: every statement they make is true.
+    \item \textbf{Liar}: every statement they make is false.
+    \item \textbf{Random}: each statement may independently be true or false.
+    \item \textbf{Alternator}: alternates between true and false statements,
+    beginning with a true statement.
+\end{itemize}
+
+You are also told that among the six mathematicians there are
+\[
+2 \text{ Truth-tellers}, \qquad
+2 \text{ Liars}, \qquad
+1 \text{ Random}, \qquad
+1 \text{ Alternator}.
+\]
+
+Each mathematician makes two statements, in the order shown.
+
+\medskip
+
+\textbf{Ada:}
+\begin{enumerate}
+    \item Exactly one of Bertrand, Emmy, and David is an Alternator.
+    \item Exactly one of Carl, Emmy, and David is Random.
+\end{enumerate}
+
+\textbf{Bertrand:}
+\begin{enumerate}
+    \item Exactly one of Bertrand, Carl, and Sofia is a Liar.
+    \item Exactly one of Ada, Carl, and Emmy is an Alternator.
+\end{enumerate}
+
+\textbf{Carl:}
+\begin{enumerate}
+    \item Exactly one of Ada, Bertrand, and Emmy is a Liar.
+    \item Exactly one of Carl, Emmy, and Sofia is Random.
+\end{enumerate}
+
+\textbf{Emmy:}
+\begin{enumerate}
+    \item Exactly two of Ada, Bertrand, and David are Liars.
+    \item Exactly one of Carl and Emmy is a Truth-teller.
+\end{enumerate}
+
+\textbf{David:}
+\begin{enumerate}
+    \item Neither Bertrand nor Emmy is Random.
+    \item Exactly one of Carl, Emmy, and Sofia is a Liar.
+\end{enumerate}
+
+\textbf{Sofia:}
+\begin{enumerate}
+    \item Exactly one of Carl, David, and Sofia is a Liar.
+    \item Exactly one of Ada and Bertrand is a Liar.
+\end{enumerate}
+
+\medskip
+
+\textbf{Question:} Determine the exact type of each mathematician.
+Justify your answer; guessing or simply checking all possibilities is not enough.
+
+\begin{solution}
+    % Solution to the Challenge goes here
+
+
+
+\end{solution}
+
+\end{challenge}
+
+
+
+\end{document}
+
+
+
+
