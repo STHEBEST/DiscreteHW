@@ -385,33 +385,86 @@ s = \text{``Yasmin is a knight''}.
 
         \begin{solution}
             % Solution to Problem 5(a) goes here
+        
+        \[
+        r \rightarrow c
+        \]
 
+        \[
+        c \rightarrow m
+        \]
 
-
+        \[
+        r \land \neg m
+        \]
+    
         \end{solution}
         \item Determine if this set of three constraints is consistent. Can the project be built according to these specifications? Justify your answer.
 
         \begin{solution}
             % Solution to Problem 5(b) goes here
+        
+        The set of constraints is not consistent.
 
+        From constraint (3), $r \land \neg m$, we know that $r$ is true
+        and $m$ is false. Since $r$ is true, constraint (1),
+        $r \rightarrow c$, implies that $c$ is true. Then constraint (2),
+        $c \rightarrow m$, implies that $m$ is true.
 
+        This gives both $m$ and $\neg m$, which is a contradiction.
+        Therefore, the three constraints are inconsistent, and the project
+        cannot be built according to these specifications.
 
         \end{solution}
         \item Suppose constraint (3) is changed to: "The client insists that the application must have real-time features, but they cannot deploy on the cloud." Is the set of constraints \{1, 2, new 3\} consistent?
 
         \begin{solution}
             % Solution to Problem 5(c) goes here
+        
+        The new constraint (3) is
 
+            \[
+            r \land \neg c
+            \]
 
+            This requires $r$ to be true and $c$ to be false. However,
+            constraint (1), $r \rightarrow c$, states that if $r$ is true,
+            then $c$ must also be true.
 
+            Therefore, we get both $c$ and $\neg c$, which is a contradiction.
+            Thus, the set of constraints is inconsistent.
+            
         \end{solution}
         \item Consider only the first two constraints. Is the statement, "If the application has real-time features, then it uses a NoSQL database" ($r \rightarrow m$), a logical consequence of these two constraints? (i.e., is $((r \rightarrow c) \land (c \rightarrow m)) \rightarrow (r \rightarrow m)$ a tautology?)
 
         \begin{solution}
             % Solution to Problem 5(d) goes here
+         
+            Yes, $r \rightarrow m$ is a logical consequence of the first two
+            constraints.
 
+            From constraint (1), we have $r \rightarrow c$, and from constraint
+            (2), we have $c \rightarrow m$. By hypothetical syllogism,
 
+            \[
+            r \rightarrow c, \qquad c \rightarrow m
+            \]
 
+            implies
+
+            \[
+            r \rightarrow m.
+            \]
+
+            Therefore,
+
+            \[
+            ((r \rightarrow c) \land (c \rightarrow m))
+            \rightarrow (r \rightarrow m)
+            \]
+
+            is a tautology.
+            
         \end{solution}
     \end{enumerate}
 \end{problem}
