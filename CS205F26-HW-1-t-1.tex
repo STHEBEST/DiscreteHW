@@ -483,7 +483,48 @@ Phrase this problem in terms of logical formulae and find the treasure if it exi
 
 \begin{solution}
     % Solution to Problem 6 goes here
+    
+    Let $p$ mean ``Door 1 leads to treasure'' and let $q$ mean
+    ``Door 2 leads to treasure.''
 
+    Door 1 says that both rooms have treasure, so its inscription is
+
+    \[
+    p \land q.
+    \]
+
+    Since Door 1's inscription is true exactly when Door 1 leads to
+    treasure, we have
+
+    \[
+    p \leftrightarrow (p \land q).
+    \]
+
+    Door 2 says that its room has treasure and the other room has a tiger.
+    Therefore, its inscription is
+
+    \[
+    q \land \neg p.
+    \]
+
+    Door 2's inscription is true exactly when Door 2 leads to a tiger.
+    Since Door 2 leads to a tiger when $\neg q$ is true, we have
+
+    \[
+    \neg q \leftrightarrow (q \land \neg p).
+    \]
+
+    For the second formula to be true, $q$ must be true. When $q$ is true,
+    the left side $\neg q$ is false, so $q \land \neg p$ must also be
+    false. Therefore, $p$ must be true.
+
+    Thus,
+
+    \[
+    p = \text{True}, \qquad q = \text{True}.
+    \]
+
+    Therefore, both Door 1 and Door 2 lead to treasure.
 
 
 \end{solution}
