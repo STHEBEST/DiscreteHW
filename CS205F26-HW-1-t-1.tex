@@ -514,18 +514,39 @@ Phrase this problem in terms of logical formulae and find the treasure if it exi
     \neg q \leftrightarrow (q \land \neg p).
     \]
 
-    For the second formula to be true, $q$ must be true. When $q$ is true,
-    the left side $\neg q$ is false, so $q \land \neg p$ must also be
-    false. Therefore, $p$ must be true.
+    Consider the possible values of $q$. If $q$ is false, then $\neg q$
+    is true, while $q \land \neg p$ is false. This makes the second
+    biconditional false. Therefore, $q$ must be true.
 
-    Thus,
+    Since $q$ is true, $\neg q$ is false. For
+
+    \[
+    \neg q \leftrightarrow (q \land \neg p)
+    \]
+
+    to be true, $q \land \neg p$ must also be false. Since $q$ is true,
+    this requires $p$ to be true.
+
+    Checking the first formula,
+
+    \[
+    p \leftrightarrow (p \land q),
+    \]
+
+    with $p$ and $q$ both true gives
+
+    \[
+    \text{True} \leftrightarrow
+    (\text{True} \land \text{True}),
+    \]
+
+    which is true. Therefore,
 
     \[
     p = \text{True}, \qquad q = \text{True}.
     \]
 
-    Therefore, both Door 1 and Door 2 lead to treasure.
-
+    Thus, both Door 1 and Door 2 lead to treasure.
 
 \end{solution}
 
