@@ -107,7 +107,7 @@
 % Fill Out This Part With Your Own Information:
 %=====================================================
 
-\renewcommand{\thisname}{FIRST$_1$ LAST$_1$, FIRST$_2$ LAST$_2$, FIRST$_3$ LAST$_3$} % Enter your name here
+\renewcommand{\thisname}{Saarthak Shah, Saad Jadoon, Allen Ugaz, Siyuan Gu} % Enter your name here
 
 
 
@@ -281,9 +281,6 @@ $\exists x (Q(x) \land \neg P(x) \land \forall y ((Q(y) \land \neg P(y)) \righta
 
 
 
-
-
-
 \begin{problem}
 
 A very special island is inhabited only by knights and knaves. Knights always tell the truth, and knaves always lie.
@@ -313,7 +310,23 @@ s = \text{``Yasmin is a knight''}.
     \begin{solution}
         % Solution to Problem 3(a) goes here
 
+        The statements can be written as the following boolean formulae:
 
+        \[
+        p \leftrightarrow \neg q
+        \]
+
+        \[
+        q \leftrightarrow \neg r
+        \]
+
+        \[
+        r \leftrightarrow p
+        \]
+
+        \[
+        s \leftrightarrow (\neg r \land \neg s)
+        \]
 
     \end{solution}
     \item Construct a truth table for the formulae and use it to determine which islanders are knights and which are knaves.
@@ -321,7 +334,67 @@ s = \text{``Yasmin is a knight''}.
     \begin{solution}
         % Solution to Problem 3(b) goes here
 
+        Let
 
+        \[
+        A = p \leftrightarrow \neg q,
+        \]
+
+        \[
+        B = q \leftrightarrow \neg r,
+        \]
+
+        \[
+        C = r \leftrightarrow p,
+        \]
+
+        and
+
+        \[
+        D = s \leftrightarrow (\neg r \land \neg s).
+        \]
+
+        The truth table is:
+
+        \[
+        \begin{array}{c c c c|c c c c}
+        p&q&r&s&A&B&C&D\\
+        \hline
+        F&F&F&F&F&F&T&F\\
+        F&F&F&T&F&F&T&F\\
+        F&F&T&F&F&T&F&T\\
+        F&F&T&T&F&T&F&F\\
+        F&T&F&F&T&T&T&F\\
+        F&T&F&T&T&T&T&F\\
+        F&T&T&F&T&F&F&T\\
+        F&T&T&T&T&F&F&F\\
+        T&F&F&F&T&F&F&F\\
+        T&F&F&T&T&F&F&F\\
+        T&F&T&F&T&T&T&T\\
+        T&F&T&T&T&T&T&F\\
+        T&T&F&F&F&T&F&F\\
+        T&T&F&T&F&T&F&F\\
+        T&T&T&F&F&F&T&T\\
+        T&T&T&T&F&F&T&F
+        \end{array}
+        \]
+
+        The row in which all four formulae are true is
+
+        \[
+        p=T,\qquad q=F,\qquad r=T,\qquad s=F.
+        \]
+
+        Therefore, Victoria and Trevor are knights, while Ingrid and
+        Yasmin are knaves.
+
+        \[
+        \boxed{\text{Victoria and Trevor are knights}}
+        \]
+
+        \[
+        \boxed{\text{Ingrid and Yasmin are knaves}}
+        \]
 
     \end{solution}
 \end{enumerate}
@@ -483,71 +556,9 @@ Phrase this problem in terms of logical formulae and find the treasure if it exi
 
 \begin{solution}
     % Solution to Problem 6 goes here
+
+
     
-    Let $p$ mean ``Door 1 leads to treasure'' and let $q$ mean
-    ``Door 2 leads to treasure.''
-
-    Door 1 says that both rooms have treasure, so its inscription is
-
-    \[
-    p \land q.
-    \]
-
-    Since Door 1's inscription is true exactly when Door 1 leads to
-    treasure, we have
-
-    \[
-    p \leftrightarrow (p \land q).
-    \]
-
-    Door 2 says that its room has treasure and the other room has a tiger.
-    Therefore, its inscription is
-
-    \[
-    q \land \neg p.
-    \]
-
-    Door 2's inscription is true exactly when Door 2 leads to a tiger.
-    Since Door 2 leads to a tiger when $\neg q$ is true, we have
-
-    \[
-    \neg q \leftrightarrow (q \land \neg p).
-    \]
-
-    Consider the possible values of $q$. If $q$ is false, then $\neg q$
-    is true, while $q \land \neg p$ is false. This makes the second
-    biconditional false. Therefore, $q$ must be true.
-
-    Since $q$ is true, $\neg q$ is false. For
-
-    \[
-    \neg q \leftrightarrow (q \land \neg p)
-    \]
-
-    to be true, $q \land \neg p$ must also be false. Since $q$ is true,
-    this requires $p$ to be true.
-
-    Checking the first formula,
-
-    \[
-    p \leftrightarrow (p \land q),
-    \]
-
-    with $p$ and $q$ both true gives
-
-    \[
-    \text{True} \leftrightarrow
-    (\text{True} \land \text{True}),
-    \]
-
-    which is true. Therefore,
-
-    \[
-    p = \text{True}, \qquad q = \text{True}.
-    \]
-
-    Thus, both Door 1 and Door 2 lead to treasure.
-
 \end{solution}
 
 \end{problem}
@@ -685,7 +696,9 @@ There are at least two different cryptographers that know the secret key.
         \begin{solution}
             % Solution to Problem 8(2) goes here
 
-There are not three different cryptographers that know the secret key.
+There do not exist three different cryptographers who all know the
+secret key. In other words, at most two cryptographers know the key.
+
 
         \end{solution}
         \item $\text{knowsKey}(\text{Ron}) \rightarrow \text{knowsKey}(\text{Whit})$
